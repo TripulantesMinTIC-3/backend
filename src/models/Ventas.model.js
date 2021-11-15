@@ -13,4 +13,4 @@ const VentasSchemma = mongoose.Schema({
     Precio_unitario:Number
 })
   
-module.exports=mongoose.model("Ventas", VentasSchemma);
+module.exports=mongoose.model("ventas", VentasSchemma);

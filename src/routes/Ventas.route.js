@@ -1,12 +1,21 @@
-var express = require("express");
-const router = express.Router();
+const {Router} = require("express")
+const router = Router()
+const VentasCtrl = require("../controllers/Ventas.controllers")
+const Auth = require("../helper/Auth")
 
-const VentasController = require("../controllers/Ventas.controllers");
 
-router.get("/listarventas", VentasController.getVentas);
-router.post("/crearventa", VentasController.addVentas);
-router.delete("/borrar/idventa", VentasController.deleteVentas);
-router.get("/listar/:idventa", VentasController.getVentaId);
-router.put("/actualizar/:id", VentasController.updateVentasById);
+router.delete("/delete/:id",Auth.verificartoken,VentasCtrl.eliminar)
+router.get("/listarventasjefe/:id",Auth.verificartoken,VentasCtrl.ventasdeunjefe)
+router.get("/listar/:id",Auth.verificartoken,VentasCtrl.listarid)
+router.get("/listarventas",Auth.verificartoken, VentasCtrl.listar)
+router.post("/crear",Auth.verificartoken,VentasCtrl.crear)
+router.put("/actualizar/:id",Auth.verificartoken,VentasCtrl.actualizar)
+router.get("/buscar/:identificador",Auth.verificartoken,VentasCtrl.buscarventa)
 
-module.exports = router;
+
+
+
+
+
+
+module.exports = router

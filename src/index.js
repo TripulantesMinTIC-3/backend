@@ -12,8 +12,8 @@ app.use(bodyparser.urlencoded({extended:true}))
 app.use(bodyparser.json())
 app.use(cors({origen:'*'})) 
 
-app.use('/jefe',require('./routes/Jefe.route'))
-app.use('/empleados', require('./routes/empleado.route'))
+//app.use('/jefe',require('./routes/Jefe.route'))
+app.use('/usuarios', require('./routes/Usuario.route'))
 app.use('/producto', require('./routes/Productos.route'))
 app.use('/ventas', require('./routes/Ventas.route'))
 

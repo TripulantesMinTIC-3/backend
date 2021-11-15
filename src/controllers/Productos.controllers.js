@@ -1,6 +1,6 @@
 const ProductoCtrl={}
 const Producto=require('../models/Productos.model')
-const EmpleadoCtrl = require('./Empleado.controllers')
+//const EmpleadoCtrl = require('./Empleado.controllers')
 
 ProductoCtrl.crear=async(req,res)=>{
     const {titulo,descripcion,precio,disponible}=req.body
