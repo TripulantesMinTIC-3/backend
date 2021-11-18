@@ -4,7 +4,7 @@ const {Schema} = mongoose
 const VentasSchemma = mongoose.Schema({
     Fecha_Venta: Date, 
     Producto:  String,
-    Referencia:  Number, 
+    Referencia:  String, 
     Total:Number,
     Descripcion:  String,
     Vendedor:  String,

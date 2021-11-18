@@ -47,7 +47,7 @@ ProductoCtrl.actualizar=async(req,res)=>{
 
 ProductoCtrl.buscarproducto=async(req,res)=>{
     const descripcion=req.params.descripcion
-    const respuesta=await Producto.findOne({descripcion:{$regex:".*"+descripcion+".*"}})
+    const respuesta=await Producto.find({descripcion:{$regex:".*"+descripcion+".*"}})
     res.json(respuesta)
 }
 module.exports=ProductoCtrl

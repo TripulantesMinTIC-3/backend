@@ -27,19 +27,19 @@ VentasCtrl.listar = async (req, res) => {
 }
 
 VentasCtrl.listarid = async (req, res) => {
-    const id = req.params.id
-    const respuesta = await Ventas.findById({id})
+    const _id = req.params.id
+    const respuesta = await Ventas.findById({_id})
     res.json(respuesta)
 }
  VentasCtrl.ventasdeunvendedor = async (req, res) => {
-    const id = req.params.id
-    const respuesta = await Ventas.find({ usuario: id })
+    const _id = req.params.id
+    const respuesta = await Ventas.find({ usuario: _id })
     res.json(respuesta)
 }
 
 VentasCtrl.eliminar = async (req, res) => {
-    const id = req.params.id
-    await Ventas.findByIdAndRemove({ _id:id})
+    const _id = req.params.id
+    await Ventas.findByIdAndRemove({ _id})
     res.json({
         mensaje: "Venta eliminada"
 /*         valortotaFecha_Vental: Ventas.Fecha_Venta,
@@ -76,8 +76,8 @@ VentasCtrl.actualizar = async(req,res)=>{
 
 }
 VentasCtrl.buscarventa=async (req,res)=>{
-    const idventas =req.params.idventas
-    const respuesta = await Ventas.findOne({identificador: { $regex: ".*" + idventas + ".*" }});
+    const id =req.params.id
+    const respuesta = await Ventas.find({Referencia: { $regex: ".*" + id + ".*" }});
 
     res.json(respuesta)
 
