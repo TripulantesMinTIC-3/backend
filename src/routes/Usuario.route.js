@@ -6,13 +6,14 @@ const Auth = require('../helper/Auth')
 //router.post('/crear',UsuarioCtrl.crear)
 
 
-router.post('/login',Auth.verificartoken,UsuarioCtrl.login)
-router.post("/crear",Auth.verificartoken,UsuarioCtrl.crearUsuario)
-router.get("/listar",Auth.verificartoken,UsuarioCtrl.listar)
-router.get("/listar/:id",Auth.verificartoken,UsuarioCtrl.listarid)
-router.delete("/delete/:id",Auth.verificartoken,UsuarioCtrl.eliminar)
-router.put("/actualizar/:id",Auth.verificartoken,UsuarioCtrl.actualizar)
-router.get("/buscar/:correo",Auth.verificartoken,UsuarioCtrl.buscarusuario)
+router.post('/login',UsuarioCtrl.login)
+router.post("/crear",UsuarioCtrl.crearUsuario)
+router.post("/Registrar",UsuarioCtrl.RegistrarUsuario)
+router.get("/listar",UsuarioCtrl.listar)
+router.get("/listar/:id",UsuarioCtrl.listarid)
+router.delete("/delete/:id",UsuarioCtrl.eliminar)
+router.put("/actualizar/:id",UsuarioCtrl.actualizar)
+router.get("/buscar/:correo",UsuarioCtrl.buscarusuario)
 
 module.exports=router
 

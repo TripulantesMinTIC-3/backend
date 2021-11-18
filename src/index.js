@@ -12,11 +12,9 @@ app.use(bodyparser.urlencoded({extended:true}))
 app.use(bodyparser.json())
 app.use(cors({origen:'*'})) 
 
-//app.use('/jefe',require('./routes/Jefe.route'))
 app.use('/usuarios', require('./routes/Usuario.route'))
 app.use('/producto', require('./routes/Productos.route'))
 app.use('/ventas', require('./routes/Ventas.route'))
-
 
 app.listen(app.get('Port'),()=>{
     console.log('servidor escuchando por el puerto ', app.get('Port'))

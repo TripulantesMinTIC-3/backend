@@ -4,13 +4,13 @@ const VentasCtrl = require("../controllers/Ventas.controllers")
 const Auth = require("../helper/Auth")
 
 
-router.delete("/delete/:id",Auth.verificartoken,VentasCtrl.eliminar)
-router.get("/listarventasjefe/:id",Auth.verificartoken,VentasCtrl.ventasdeunjefe)
-router.get("/listar/:id",Auth.verificartoken,VentasCtrl.listarid)
-router.get("/listarventas",Auth.verificartoken, VentasCtrl.listar)
-router.post("/crear",Auth.verificartoken,VentasCtrl.crear)
-router.put("/actualizar/:id",Auth.verificartoken,VentasCtrl.actualizar)
-router.get("/buscar/:identificador",Auth.verificartoken,VentasCtrl.buscarventa)
+router.delete("/delete/:id",VentasCtrl.eliminar)
+router.get("/listarventas/:id",VentasCtrl.ventasdeunvendedor)
+router.get("/listar/:id",VentasCtrl.listarid)
+router.get("/listarventas", VentasCtrl.listar)
+router.post("/crear",VentasCtrl.crear)
+router.put("/actualizar/:id",VentasCtrl.actualizar)
+router.get("/buscar/:id",VentasCtrl.buscarventa)
 
 
 

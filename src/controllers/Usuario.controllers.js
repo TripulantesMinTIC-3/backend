@@ -3,9 +3,9 @@ const Usuario=require('../models/Usuario.model')
 const bcrypt=require('bcryptjs')
 const jwt=require('jsonwebtoken')
 
-UsuarioCtrl.crearUsuario = async (req, res) => {
-    const { nombres, apellidos, correo, rol, contrasena, activo} = req.body;
-    const NuevoUsuario = new Usuario({ nombres, apellidos, correo, rol, contrasena, activo })
+UsuarioCtrl.RegistrarUsuario = async (req, res) => {
+    const { nombres, correo, contrasena} = req.body;
+    const NuevoUsuario = new Usuario({ nombres, correo, contrasena, apellidos:"",rol: "Usuario",estado: "Pendiente" })
     const correoUsuario = await Usuario.findOne({ correo: correo })
     if (correoUsuario) { res.json({ mensaje: "El correo ya existe" }) }
     else {
@@ -16,9 +16,33 @@ UsuarioCtrl.crearUsuario = async (req, res) => {
             mensaje: "Bienvenido",
             id: NuevoUsuario._id,
             nombres: NuevoUsuario.nombres,
+            rol: "Usuario",
+            correo: correo,
+            estado: "Pendiente",
+            apellidos: "",
+            contrasena: NuevoUsuario.contrasena,
+            token
+        })
+    }
+
+
+}
+UsuarioCtrl.crearUsuario = async (req, res) => {
+    const { nombres, apellidos, correo, rol, contrasena, activo} = req.body;
+    const NuevoUsuario = new Usuario({ nombres, apellidos, correo, rol, contrasena, activo })
+    const correoUsuario = await Usuario.findOne({ correo: correo })
+    if (correoUsuario) { res.json({ mensaje: "El correo ya existe" }) }
+    else {
+        NuevoUsuario.contrasena = await bcrypt.hash(contrasena, 10)
+        const token = jwt.sign({ _id: NuevoUsuario._id }, "secreta")
+        await NuevoUsuario.save()
+        res.json({
+            mensaje: "Usuario Creado",
+            id: NuevoUsuario._id,
+            nombres: NuevoUsuario.nombres,
             rol: rol,
             correo: correo,
-            estado: estado,
+            estado: activo,
             token
         })
     }

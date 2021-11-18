@@ -24,7 +24,7 @@ ProductoCtrl.listar=async(req,res)=>{
 
 ProductoCtrl.listarid=async(req,res)=>{
     const id=req.params.id
-    const respuesta=await Producto.findById({_id:id})
+    const respuesta=await Producto.findById(id)
     res.json(respuesta)
     
 }
